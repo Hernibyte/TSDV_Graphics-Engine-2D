@@ -4,5 +4,27 @@
     <Filter Include="Source">
       <UniqueIdentifier>{943f57ba-05b8-45d6-a179-8d41f8b3bbdb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Window">
+      <UniqueIdentifier>{af93c3c8-b34c-41f5-8897-6995dd61aed4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Basegame">
+      <UniqueIdentifier>{d6b27380-7a0a-48a0-89d4-7c55b0d7e2ca}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Window.h">
+      <Filter>Source\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Basegame.h">
+      <Filter>Source\Basegame</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Window.cpp">
+      <Filter>Source\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Basegame.cpp">
+      <Filter>Source\Basegame</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
