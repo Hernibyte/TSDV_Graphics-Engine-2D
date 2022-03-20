@@ -1,7 +1,7 @@
 #ifndef BASEGAME_H
 #define BASEGAME_H
 
-#include "Window.h"
+#include "Shape.h"
 
 class Basegame {
 public:
@@ -11,11 +11,13 @@ public:
 	void Run();
 protected:
 	~Basegame() = default;
+	
+	Window window;
+	Renderer render;
 
 	virtual void Start() {}
 	virtual void Update() {}
 private:
-	Window window;
 
 	void Core_Start();
 	void Core_Update();

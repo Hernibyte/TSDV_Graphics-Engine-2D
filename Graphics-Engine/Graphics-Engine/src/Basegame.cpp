@@ -4,12 +4,16 @@ Basegame::Basegame() {
 	window.Width(800);
 	window.Height(800);
 	window.Tittle("Window");
+
+	render = Renderer();
 }
 
 Basegame::Basegame(int width, int height, const char* tittle) {
 	window.Width(width);
 	window.Height(height);
 	window.Tittle(tittle);
+
+	render = Renderer();
 }
 
 void Basegame::Run() {
@@ -29,7 +33,12 @@ void Basegame::Run() {
 }
 
 void Basegame::Core_Start() {
-
+	ShaderSource shaderSource = Renderer::ParceShader("src/StandardShader/StandardShader.glsl");
+	render.CreateProgram(shaderSource.Vertex, shaderSource.Fragment);
+	render.GenerateBuffers();
+	render.BindBuffers();
+	render.VertexAttributes();
+	render.GetUniformsLocation();
 }
 
 void Basegame::Core_Update() {

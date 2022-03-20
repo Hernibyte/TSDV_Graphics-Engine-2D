@@ -10,6 +10,24 @@
     <Filter Include="Source\Basegame">
       <UniqueIdentifier>{d6b27380-7a0a-48a0-89d4-7c55b0d7e2ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Renderer">
+      <UniqueIdentifier>{c2ea0d0e-4124-4078-b979-919de2f52f31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Renderer\StandardShader">
+      <UniqueIdentifier>{6e39485f-d280-4ad5-a04f-dece8a10b192}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Transform">
+      <UniqueIdentifier>{6de24d75-3595-4e0e-aec6-db09441391e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entity">
+      <UniqueIdentifier>{7f9c8e1a-8991-48f8-bf32-b1efc9bcddd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entity\Entity2D">
+      <UniqueIdentifier>{4a6f4ca6-2f63-4890-a14f-1ac3fad10e37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shape">
+      <UniqueIdentifier>{bfa34b0f-b2a4-4174-a187-978cb815a81b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window.h">
@@ -17,6 +35,24 @@
     </ClInclude>
     <ClInclude Include="src\Basegame.h">
       <Filter>Source\Basegame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer.h">
+      <Filter>Source\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ShaderSource.h">
+      <Filter>Source\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Transform.h">
+      <Filter>Source\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity.h">
+      <Filter>Source\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity2D.h">
+      <Filter>Source\Entity\Entity2D</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shape.h">
+      <Filter>Source\Shape</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -26,5 +62,16 @@
     <ClCompile Include="src\Basegame.cpp">
       <Filter>Source\Basegame</Filter>
     </ClCompile>
+    <ClCompile Include="src\Renderer.cpp">
+      <Filter>Source\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shape.cpp">
+      <Filter>Source\Shape</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\StandardShader\StandardShader.glsl">
+      <Filter>Source\Renderer\StandardShader</Filter>
+    </None>
   </ItemGroup>
 </Project>
