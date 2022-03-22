@@ -1,7 +1,7 @@
 #ifndef BASEGAME_H
 #define BASEGAME_H
 
-#include "Shape.h"
+#include "Sprite.h"
 
 class Basegame {
 public:
