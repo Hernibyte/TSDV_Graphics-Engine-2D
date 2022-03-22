@@ -28,6 +28,18 @@
     <Filter Include="Source\Shape">
       <UniqueIdentifier>{bfa34b0f-b2a4-4174-a187-978cb815a81b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Sprite">
+      <UniqueIdentifier>{97d778c6-2abf-4f7f-b1e5-2b81cdf3d696}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Tools">
+      <UniqueIdentifier>{e2df2e9f-3360-409d-8e98-a55236f06a75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Tools\TextureImporter">
+      <UniqueIdentifier>{e858de03-671b-4ff5-a0ef-f5e9a8dae7e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Tools\TextureImporter\stbi">
+      <UniqueIdentifier>{a47e98da-d832-4d4f-b92e-0b489d748e95}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window.h">
@@ -54,6 +66,15 @@
     <ClInclude Include="src\Shape.h">
       <Filter>Source\Shape</Filter>
     </ClInclude>
+    <ClInclude Include="src\Sprite.h">
+      <Filter>Source\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TextureImporter.h">
+      <Filter>Source\Tools\TextureImporter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\stb_image.h">
+      <Filter>Source\Tools\TextureImporter\stbi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Window.cpp">
@@ -67,6 +88,12 @@
     </ClCompile>
     <ClCompile Include="src\Shape.cpp">
       <Filter>Source\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Sprite.cpp">
+      <Filter>Source\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stb_image.cpp">
+      <Filter>Source\Tools\TextureImporter\stbi</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
