@@ -4,6 +4,7 @@
 #include "Window.h"
 #include "ShaderSource.h"
 #include "Transform.h"
+#include "TextureImporter.h"
 #include <fstream>
 #include <sstream>
 
@@ -24,9 +25,13 @@ public:
 
 	static ShaderSource ParceShader(const std::string_view filepath);
 
+	static void GenerateTexture(Texture& _texture);
+
 	void CreateProgram(const std::string& vertexShaderSource, const std::string& fragmentShaderSource);
 	
-	void Draw(float* vertex, unsigned int* index, glm::mat4 model, int type);
+	void Draw(float* vertex, unsigned int* index, glm::mat4 model, Texture _texture);
+
+	void Draw(float* vertex, unsigned int* index, glm::mat4 model);
 private:
 	unsigned int CompileShader(unsigned int type, const std::string& source);
 	
@@ -36,7 +41,7 @@ private:
 	unsigned int program;
 
 	unsigned int modelLocation;
-	//unsigned int typeLocation;
+	unsigned int typeLocation;
 };
 
 #endif // !RENDERER_H

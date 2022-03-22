@@ -7,7 +7,7 @@ Renderer::Renderer() {
 	ebo = 0;
 
 	modelLocation = 0;
-	//typeLocation = 0;
+	typeLocation = 0;
 }
 
 Renderer::~Renderer() {
@@ -32,27 +32,32 @@ void Renderer::ClearBuffers() {
 }
 
 void Renderer::VertexAttributes() {
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(3 * sizeof(float)));
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 
-	//glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(7 * sizeof(float)));
-	//glEnableVertexAttribArray(2);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(7 * sizeof(float)));
+	glEnableVertexAttribArray(2);
 }
 
 void Renderer::GetUniformsLocation() {
 	modelLocation = glGetUniformLocation(program, "model");
-	//typeLocation = glGetUniformLocation(program, "type");
+	typeLocation = glGetUniformLocation(program, "type");
 }
 
-void Renderer::Draw(float* vertex, unsigned int* index, glm::mat4 model, int type) {
+void Renderer::Draw(float* vertex, unsigned int* index, glm::mat4 model, Texture _texture) {
+	glUniform1i(typeLocation, 1);
+	
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, _texture.texture);
+	
 	glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
 		glm::value_ptr(model));
 
 	glBufferData(GL_ARRAY_BUFFER,
-		28 * sizeof(vertex), vertex,
+		36 * sizeof(vertex), vertex,
 		GL_STATIC_DRAW);
 
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
@@ -60,6 +65,54 @@ void Renderer::Draw(float* vertex, unsigned int* index, glm::mat4 model, int typ
 		GL_STATIC_DRAW);
 
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+}
+
+void Renderer::Draw(float* vertex, unsigned int* index, glm::mat4 model) {
+	glUniform1i(typeLocation, 0);
+
+	glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
+		glm::value_ptr(model));
+
+	glBufferData(GL_ARRAY_BUFFER,
+		36 * sizeof(vertex), vertex,
+		GL_STATIC_DRAW);
+
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
+		6 * sizeof(index), index,
+		GL_STATIC_DRAW);
+
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+}
+
+void Renderer::GenerateTexture(Texture& _texture) {
+	glGenTextures(1, &_texture.texture);
+	glBindTexture(GL_TEXTURE_2D, _texture.texture);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	if (_texture.data) {
+		switch (_texture.type) {
+		case TextureType::RGB:
+			glTexImage2D(
+				GL_TEXTURE_2D, 0,
+				GL_RGB, _texture.width,
+				_texture.height, 0, GL_RGB,
+				GL_UNSIGNED_BYTE, _texture.data);
+			break;
+		case TextureType::RGBA:
+			glTexImage2D(
+				GL_TEXTURE_2D, 0,
+				GL_RGBA, _texture.width,
+				_texture.height, 0, GL_RGBA,
+				GL_UNSIGNED_BYTE, _texture.data);
+			break;
+		}
+
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
 }
 
 ShaderSource Renderer::ParceShader(const std::string_view filepath) {
