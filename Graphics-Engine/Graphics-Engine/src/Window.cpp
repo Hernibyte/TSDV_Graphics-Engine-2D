@@ -86,6 +86,7 @@ void Window::Start() {
 	}
 	//
 	glfwMakeContextCurrent(WinMain);
+	glfwSwapInterval(1);
 	//
 	int _width, _height;
 	glfwGetFramebufferSize(WinMain, &_width, &_height);
