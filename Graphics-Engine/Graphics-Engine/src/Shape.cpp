@@ -28,6 +28,22 @@ void Shape::ChangeAlpha(float alpha) {
 	vertex[33] = alpha;
 }
 
+void Shape::Rotate(float x, float y, float z) {
+	transform.Rotate(x, y, z);
+}
+
+void Shape::SetPosition(float x, float y, float z) {
+	transform.SetPosition(x, y, z);
+}
+
+void Shape::Translate(float x, float y, float z) {
+	transform.Translate(x, y, z);
+}
+
+void Shape::Scale(float x, float y, float z) {
+	transform.Scale(x, y, z);
+}
+
 void Shape::Draw() {
 	render->Draw(vertex, index, transform.Model());
 }
