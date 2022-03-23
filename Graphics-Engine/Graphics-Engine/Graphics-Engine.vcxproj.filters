@@ -40,6 +40,12 @@
     <Filter Include="Source\Tools\TextureImporter\stbi">
       <UniqueIdentifier>{a47e98da-d832-4d4f-b92e-0b489d748e95}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Timer">
+      <UniqueIdentifier>{a24bb4fe-e162-46a4-8d27-7112e866de52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Input">
+      <UniqueIdentifier>{19b59946-b6c9-4c30-8dc9-7ff557ac9ad7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window.h">
@@ -75,6 +81,12 @@
     <ClInclude Include="src\stb_image.h">
       <Filter>Source\Tools\TextureImporter\stbi</Filter>
     </ClInclude>
+    <ClInclude Include="src\Time.h">
+      <Filter>Source\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input.h">
+      <Filter>Source\Input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Window.cpp">
@@ -94,6 +106,12 @@
     </ClCompile>
     <ClCompile Include="src\stb_image.cpp">
       <Filter>Source\Tools\TextureImporter\stbi</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Time.cpp">
+      <Filter>Source\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input.cpp">
+      <Filter>Source\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

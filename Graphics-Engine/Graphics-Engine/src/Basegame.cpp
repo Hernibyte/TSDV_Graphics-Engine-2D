@@ -4,16 +4,12 @@ Basegame::Basegame() {
 	window.Width(800);
 	window.Height(800);
 	window.Tittle("Window");
-
-	render = Renderer();
 }
 
 Basegame::Basegame(int width, int height, const char* tittle) {
 	window.Width(width);
 	window.Height(height);
 	window.Tittle(tittle);
-
-	render = Renderer();
 }
 
 void Basegame::Run() {

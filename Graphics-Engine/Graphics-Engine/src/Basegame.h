@@ -13,10 +13,11 @@ public:
 protected:
 	~Basegame() = default;
 	
-	Window window;
-	Renderer render;
+	Window window { };
+	Renderer render { };
 
-	Time time{};
+	Time time { };
+	Input input { window };
 
 	virtual void Start() {}
 	virtual void Update() {}
