@@ -2,6 +2,7 @@
 #define BASEGAME_H
 
 #include "Sprite.h"
+#include "Time.h"
 
 class Basegame {
 public:
@@ -14,6 +15,8 @@ protected:
 	
 	Window window;
 	Renderer render;
+
+	Time time{};
 
 	virtual void Start() {}
 	virtual void Update() {}

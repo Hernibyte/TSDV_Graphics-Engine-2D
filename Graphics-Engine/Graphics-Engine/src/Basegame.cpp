@@ -21,12 +21,16 @@ void Basegame::Run() {
 	Start();
 
 	while (!window.IsWindowShouldClose()) {
+		time.Start();
+
 		window.Clear(0, 0, 0, 0);
 
 		Core_Update();
 		Update();
 
 		window.Refresh();
+
+		time.Tick();
 	}
 
 	Core_Sleep();
