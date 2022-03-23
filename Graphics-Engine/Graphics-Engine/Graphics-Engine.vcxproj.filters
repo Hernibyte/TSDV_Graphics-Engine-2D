@@ -46,6 +46,9 @@
     <Filter Include="Source\Input">
       <UniqueIdentifier>{19b59946-b6c9-4c30-8dc9-7ff557ac9ad7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Camera">
+      <UniqueIdentifier>{6cdf7e15-989e-4ef0-b9ea-5f982819f74f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window.h">
@@ -87,6 +90,9 @@
     <ClInclude Include="src\Input.h">
       <Filter>Source\Input</Filter>
     </ClInclude>
+    <ClInclude Include="src\Camera.h">
+      <Filter>Source\Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Window.cpp">
@@ -112,6 +118,9 @@
     </ClCompile>
     <ClCompile Include="src\Input.cpp">
       <Filter>Source\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Camera.cpp">
+      <Filter>Source\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -42,7 +42,7 @@ void Basegame::Core_Start() {
 }
 
 void Basegame::Core_Update() {
-
+	render.UpdateCamera();
 }
 
 void Basegame::Core_Sleep() {

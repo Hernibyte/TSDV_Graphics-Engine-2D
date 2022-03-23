@@ -3,6 +3,7 @@
 
 #include "Sprite.h"
 #include "Time.h"
+#include "Camera.h"
 
 class Basegame {
 public:
