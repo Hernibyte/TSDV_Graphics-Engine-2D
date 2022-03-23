@@ -13,6 +13,14 @@ public:
 
 	void ChangeAlpha(float alpha);
 
+	void Rotate(float x, float y, float z);
+
+	void SetPosition(float x, float y, float z);
+
+	void Translate(float x, float y, float z);
+
+	void Scale(float x, float y, float z);
+
 	void Draw();
 
 private:

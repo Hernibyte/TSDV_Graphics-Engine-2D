@@ -33,6 +33,22 @@ void Sprite::ChangeAlpha(float alpha) {
 	vertex[33] = alpha;
 }
 
+void Sprite::Rotate(float x, float y, float z) {
+	transform.Rotate(x, y, z);
+}
+
+void Sprite::SetPosition(float x, float y, float z) {
+	transform.SetPosition(x, y, z);
+}
+
+void Sprite::Translate(float x, float y, float z) {
+	transform.Translate(x, y, z);
+}
+
+void Sprite::Scale(float x, float y, float z) {
+	transform.Scale(x, y, z);
+}
+
 void Sprite::Draw() {
 	render->Draw(vertex, index, transform.Model(), texture);
 }
