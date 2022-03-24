@@ -32,10 +32,10 @@ void Camera::Rotate(float x, float y, bool constrainPitch) {
 
 void Camera::UpdateCameraVectors() {
 	glm::vec3 front { };
-	front.x = cos(glm::radians(render->mvp.yaw) * cos(glm::radians(render->mvp.pitch)));
+	front.x = cos(glm::radians(render->mvp.yaw)) * cos(glm::radians(render->mvp.pitch));
 	front.y = sin(glm::radians(render->mvp.pitch));
-	front.z = sin(glm::radians(render->mvp.yaw) * cos(glm::radians(render->mvp.pitch)));
-	render->mvp.cameraFront = front;
+	front.z = sin(glm::radians(render->mvp.yaw)) * cos(glm::radians(render->mvp.pitch));
+	render->mvp.cameraFront = glm::normalize(front);
 	render->mvp.cameraRight = glm::normalize(glm::cross(render->mvp.cameraFront, render->mvp.worldUp));
 	render->mvp.cameraUp = glm::normalize(glm::cross(render->mvp.cameraRight, render->mvp.cameraFront));
 }
