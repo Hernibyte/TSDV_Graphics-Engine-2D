@@ -8,7 +8,7 @@
 #include <fstream>
 #include <sstream>
 
-struct MVP {
+struct InternalCamera {
 	glm::mat4 view;
 	glm::mat4 projection;
 	glm::vec3 cameraPos { 0, 0, 3.0f };
@@ -52,7 +52,7 @@ public:
 
 	void Draw(float* vertex, unsigned int* index, glm::mat4 model);
 	
-	MVP mvp { };
+	InternalCamera internalCamera { };
 
 	ProjectionType projectionType { };
 private:

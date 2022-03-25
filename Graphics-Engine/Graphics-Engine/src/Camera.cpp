@@ -5,26 +5,26 @@ Camera::Camera(Renderer& renderer) {
 }
 
 void Camera::SetPosition(float x, float y, float z) {
-	render->mvp.cameraPos.x = x;
-	render->mvp.cameraPos.y = y;
-	render->mvp.cameraPos.z = z;
+	render->internalCamera.cameraPos.x = x;
+	render->internalCamera.cameraPos.y = y;
+	render->internalCamera.cameraPos.z = z;
 }
 
 void Camera::Translate(float x, float y, float z) {
-	render->mvp.cameraPos.x += x;
-	render->mvp.cameraPos.y += y;
-	render->mvp.cameraPos.z += z;
+	render->internalCamera.cameraPos.x += x;
+	render->internalCamera.cameraPos.y += y;
+	render->internalCamera.cameraPos.z += z;
 }
 
 void Camera::Rotate(float x, float y, bool constrainPitch) {
-	render->mvp.yaw += x;
-	render->mvp.pitch += y;
+	render->internalCamera.yaw += x;
+	render->internalCamera.pitch += y;
 
 	if (constrainPitch) {
-		if (render->mvp.pitch > 89.0f)
-			render->mvp.pitch = 89.0f;
-		if (render->mvp.pitch < -89.0f)
-			render->mvp.pitch = -89.0f;
+		if (render->internalCamera.pitch > 89.0f)
+			render->internalCamera.pitch = 89.0f;
+		if (render->internalCamera.pitch < -89.0f)
+			render->internalCamera.pitch = -89.0f;
 	}
 
 	UpdateCameraVectors();
@@ -32,12 +32,12 @@ void Camera::Rotate(float x, float y, bool constrainPitch) {
 
 void Camera::UpdateCameraVectors() {
 	glm::vec3 front { };
-	front.x = cos(glm::radians(render->mvp.yaw)) * cos(glm::radians(render->mvp.pitch));
-	front.y = sin(glm::radians(render->mvp.pitch));
-	front.z = sin(glm::radians(render->mvp.yaw)) * cos(glm::radians(render->mvp.pitch));
-	render->mvp.cameraFront = glm::normalize(front);
-	render->mvp.cameraRight = glm::normalize(glm::cross(render->mvp.cameraFront, render->mvp.worldUp));
-	render->mvp.cameraUp = glm::normalize(glm::cross(render->mvp.cameraRight, render->mvp.cameraFront));
+	front.x = cos(glm::radians(render->internalCamera.yaw)) * cos(glm::radians(render->internalCamera.pitch));
+	front.y = sin(glm::radians(render->internalCamera.pitch));
+	front.z = sin(glm::radians(render->internalCamera.yaw)) * cos(glm::radians(render->internalCamera.pitch));
+	render->internalCamera.cameraFront = glm::normalize(front);
+	render->internalCamera.cameraRight = glm::normalize(glm::cross(render->internalCamera.cameraFront, render->internalCamera.worldUp));
+	render->internalCamera.cameraUp = glm::normalize(glm::cross(render->internalCamera.cameraRight, render->internalCamera.cameraFront));
 }
 
 void Camera::SetProjection(ProjectionType type) {

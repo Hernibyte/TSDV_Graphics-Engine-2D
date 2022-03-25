@@ -52,18 +52,22 @@ void Renderer::GetUniformsLocation() {
 }
 
 void Renderer::UpdateCamera() {
-	mvp.view = glm::lookAt(mvp.cameraPos, mvp.cameraPos + mvp.cameraFront, mvp.cameraUp);
-	glUniformMatrix4fv(viewLocation, 1, GL_FALSE, glm::value_ptr(mvp.view));
+	internalCamera.view = glm::lookAt(
+		internalCamera.cameraPos,
+		internalCamera.cameraPos + internalCamera.cameraFront,
+		internalCamera.cameraUp
+	);
+	glUniformMatrix4fv(viewLocation, 1, GL_FALSE, glm::value_ptr(internalCamera.view));
 
 	switch (projectionType) {
 	case ProjectionType::Orthographic:
-		mvp.projection = glm::ortho(0.0f, 1280.0f, 0.0f, 720.0f);
+		internalCamera.projection = glm::ortho(0.0f, 1280.0f, 0.0f, 720.0f);
 		break;
 	case ProjectionType::Perspective:
-		mvp.projection = glm::perspective(glm::radians(45.0f), 1280.0f / 720.0f, 0.1f, 100.0f);
+		internalCamera.projection = glm::perspective(glm::radians(45.0f), 1280.0f / 720.0f, 0.1f, 100.0f);
 		break;
 	}
-	glUniformMatrix4fv(projLocation, 1, GL_FALSE, glm::value_ptr(mvp.projection));
+	glUniformMatrix4fv(projLocation, 1, GL_FALSE, glm::value_ptr(internalCamera.projection));
 }
 
 void Renderer::Draw(float* vertex, unsigned int* index, glm::mat4 model, Texture _texture) {
